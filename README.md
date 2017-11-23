@@ -1,6 +1,6 @@
 # angular_docker
 
-<h1> Usage
+<h1> Usage</h1>
 
 To build the container use the following one liner:
 
