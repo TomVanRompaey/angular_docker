@@ -1,0 +1,9 @@
+ARG NG_CLI_VERSION=latest
+ARG NODE_VERSION=8
+FROM node:$NODE_VERSION
+EXPOSE 4200
+ENV NG_CLI_VERSION=$NG_CLI_VERSION
+RUN mkdir /scripts
+ADD scripts/init.sh /scripts/init.sh
+RUN yarn global add @angular/cli@$NG_CLI_VERSION && rm -rf $(yarn cache dir)
+CMD ["/bin/bash","/scripts/init.sh"]
