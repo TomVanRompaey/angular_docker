@@ -9,7 +9,7 @@ To build the container use the following one liner:
 docker build -t aName:tag .
 ```
 
-the following one-liner will run the container and start serving your app.
+the following one-liner will run the container and start serving your app from the volume.
 
 ```shell
 docker run -d -p your_port:4200 -v /your/angular/app:/opt -w /opt nameOfImage:tag
