@@ -1,9 +1,17 @@
+#Declare your versions here
 ARG NG_CLI_VERSION=latest
 ARG NODE_VERSION=8
+
+#Using the NODE base image
 FROM node:$NODE_VERSION
+#exposing port 4200
 EXPOSE 4200
+
 ENV NG_CLI_VERSION=$NG_CLI_VERSION
+#creating a directory for the init script and copying it from the scripts folder that comes bundled with the dockerfile.
 RUN mkdir /scripts
 ADD scripts/init.sh /scripts/init.sh
+#doing something with angular....
 RUN yarn global add @angular/cli@$NG_CLI_VERSION && rm -rf $(yarn cache dir)
+#runnning the init script which will start serving the app on 0.0.0.0
 CMD ["/bin/bash","/scripts/init.sh"]
